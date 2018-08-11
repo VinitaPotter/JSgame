@@ -9,12 +9,7 @@ GAME RULES:
 
 */
 
-    var score = [0,0];
-    var activePlayer = 0;
-    var currentScore = 0;
-    var finalScore = [0, 0];
-    var gamePlaying;
-    var dice;
+    var activePlayer, currentScore, finalScore, gamePlaying, dice;
 
     
 //Step 1: Start the game
@@ -53,7 +48,9 @@ function RollTheDice() {
         
 
     }
+
 }
+    
 
 function currentPlayer() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
@@ -68,6 +65,13 @@ function init() {
     document.getElementById('score-1').textContent = 0;
     document.getElementById('current-0').textContent = 0;
     document.getElementById('score-1').textContent = 0;
+    document.querySelector(".player-0-panel").classList.remove("winner");
+    document.querySelector(".player-1-panel").classList.remove("winner");
+    document.querySelector("#name-0").textContent =("Player 1");
+    document.querySelector("#name-1").textContent =("Player 2");
+    document.querySelector(".player-0-panel").classList.remove("active");
+    document.querySelector(".player-1-panel").classList.remove("active");
+    document.querySelector(".player-0-panel").classList.add("active");
     activePlayer = 0;
     currentScore = 0;
     finalScore = [0, 0];
@@ -77,8 +81,10 @@ function init() {
 
 function winner() {
     if (finalScore[activePlayer]>= 100) {
-        document.querySelector("#name-"+ activePlayer).innerHTML = "Winner!";
-        document.querySelector(".player-"+ activePlayer+ "-panel").classList.add("winner", "player-name");
+        document.querySelector("#name-"+ activePlayer).textContent = "Winner!";
+        document.querySelector(".player-"+ activePlayer+ "-panel").classList.add("winner");
+        document.querySelector(".player-"+ activePlayer+ "-panel").classList.remove("active");
+
         
     } else {
         currentPlayer();

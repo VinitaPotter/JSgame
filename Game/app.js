@@ -76,7 +76,7 @@ function init() {
 
 
 function winner() {
-    if (finalScore[activePlayer]>= 20) {
+    if (finalScore[activePlayer]>= 100) {
         document.querySelector("#name-"+ activePlayer).innerHTML = "Winner!";
         document.querySelector(".player-"+ activePlayer+ "-panel").classList.add("winner", "player-name");
         
